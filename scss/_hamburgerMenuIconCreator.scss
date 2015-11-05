@@ -1,0 +1,87 @@
+//Extends
+%flex {
+  box-sizing: border-box;
+  display: flex;
+}
+
+%icn--ui {
+  line-height: 0;
+  cursor: pointer;
+}
+
+%pseudos {
+  display: block;
+  content: '';
+}
+
+//Static State
+@mixin hamburgerIconBox($icon-height: 30px, $icon-width: 30px, $b-rad: 0px, $padding: 4px, $bg-color: #fff){
+  @extend %flex;
+  @extend %icn--ui;
+  background-color: $bg-color;
+  height: $icon-height;
+  width: $icon-width;
+  border-radius: $b-rad;
+  padding: $padding;
+  @content;
+}
+
+@mixin hamburgerIconBorder($border-thickness: 1px, $border-style: solid, $border-color: #000){
+  border: $border-thickness $border-style $border-color;
+}
+
+@mixin hamburgerIconBars($height: 90%, $bar-height: 4px, $bar-width: 100%, $bar-color: #000){
+  @extend %flex;
+  margin: auto;
+  height: $height;
+  width: $bar-width;
+  border-top: $bar-height solid $bar-color;
+  border-bottom: $bar-height solid $bar-color;
+  position: relative;
+  &::before{
+    @extend %pseudos;
+    margin: auto;
+    height: $bar-height;
+    width: 100%;
+    background-color: $bar-color;
+  }
+  @content
+}
+
+//Hover State
+@mixin hamburgerIconBoxHover($icon-height: 30px, $icon-width: 30px, $b-rad: 0px, $padding: 4px, $bg-color: #555){
+  &:hover{
+    background-color: $bg-color;
+    height: $icon-height;
+    width: $icon-width;
+    border-radius: $b-rad;
+    padding: $padding;
+    @content;
+  }
+}
+
+@mixin hamburgerIconBorderHover($border-thickness: 1px, $border-style: solid, $border-color: #666){
+  &:hover{
+      border: $border-thickness $border-style $border-color;
+  }
+}
+
+@mixin hamburgerIconBarsHover($height: 90%, $bar-height: 4px, $bar-width: 100%, $bar-color: #fff){
+  &:hover{
+    & > div {
+    height: $height;
+    width: $bar-width;
+    border-top: $bar-height solid $bar-color;
+    border-bottom: $bar-height solid $bar-color;
+      &::before {
+        @extend %pseudos;
+        margin: auto;
+        height: $bar-height;
+        width: 100%;
+        background-color: $bar-color;
+      }
+    @content
+    }
+  }
+}
+

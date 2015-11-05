@@ -1,0 +1,37 @@
+@import 'hamburgerMenuIconCreator';
+
+.hamburger-icon {
+  @include hamburgerIconBox {
+    @include hamburgerIconBorder;
+    @include hamburgerIconBoxHover;
+    @include hamburgerIconBarsHover;
+    @include hamburgerIconBorderHover;
+  }
+}
+.hamburger-bars {
+  @include hamburgerIconBars;
+}
+
+.hamburger-icon2 {
+  @include hamburgerIconBorder($border-color: #111, $border-thickness: 3px);
+  @include hamburgerIconBox($icon-height: 100px, $icon-width: 100px, $bg-color: firebrick, $b-rad: 10px) {
+    @include hamburgerIconBoxHover($icon-height: 100px, $icon-width: 100px, $bg-color: lime);
+    @include hamburgerIconBarsHover($height: 70%, $bar-height: 3px, $bar-width: 80%, $bar-color: #000);
+    @include hamburgerIconBorderHover($border-thickness: 2px, $border-style: dotted, $border-color: coral);
+  }
+}
+.hamburger-bars2 {
+  @include hamburgerIconBars($height: 80%, $bar-height: 3px, $bar-width: 80%, $bar-color: #fff);
+}
+
+.hamburger-icon3 {
+  @include hamburgerIconBorder($border-color: red, $border-thickness: 4px);
+  @include hamburgerIconBox($icon-height: 40px, $icon-width: 30px, $bg-color: coral, $b-rad: 5px) {
+    @include hamburgerIconBoxHover($icon-height: 40px, $icon-width: 30px, $bg-color: skyblue, $b-rad: 5px);
+    @include hamburgerIconBarsHover($height: 70%, $bar-height: 3px, $bar-width: 80%, $bar-color: #000);
+    @include hamburgerIconBorderHover($border-thickness: 4px, $border-style: groove, $border-color: tomato);
+  }
+}
+.hamburger-bars3 {
+  @include hamburgerIconBars($height: 70%, $bar-height: 2px, $bar-width: 70%, $bar-color: blue);
+}
